@@ -1,0 +1,24 @@
+/*****************************************************************
+ * Grid system: Mobile, Tablet, Desktop
+ *****************************************************************/
+
+@include columns-mobile;
+
+@include media(screen, min, px(481)) {
+	@include columns-tablet;
+}
+
+@include media(screen, min, px(769)) {
+	@include columns-desktop;
+}
+
+.column {
+	float: left;
+	padding-right: px(5);
+	padding-left: px(5);
+	margin: 0 0 px(10) 0;
+}
+
+.no-paddings {
+	padding: 0;
+}

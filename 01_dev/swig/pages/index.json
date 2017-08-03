@@ -1,0 +1,12 @@
+{
+	"category": "home",
+	"page" : "blackjack",
+
+	"title" : "Blackjack",
+	"description" : "Gambling game",
+	"keywords" : "blackjack, gambling, cards, game",
+
+	"jquery": "js/lib/jquery-1.9.1.min.js",
+	"modernizr": "js/lib/modernizr-custom.js",
+	"html5shiv": "js/lib/html5shiv.min.js"
+}

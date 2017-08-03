@@ -1,0 +1,306 @@
+/*****************************************************************
+ * Fonts
+ *****************************************************************/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,300,400,600);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,700);
+/*****************************************************************
+ * CSS Resets
+ *****************************************************************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/*****************************************************************
+ * Base Root styles
+ *****************************************************************/
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+  color: #2b2b2b;
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+}
+
+.nav-open body {
+  overflow: hidden;
+}
+
+.minicart-open body {
+  overflow: hidden;
+}
+
+/*****************************************************************
+ * Typography
+ *****************************************************************/
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+a {
+  color: #222;
+}
+
+/*****************************************************************
+ * Wrapper
+ *****************************************************************/
+#wrapper {
+  background-color: #56bf92;
+  height: 100%;
+}
+
+/*****************************************************************
+ * Main
+ *****************************************************************/
+#main {
+  height: 100%;
+}
+
+#gamer-hand {
+  text-align: center;
+  margin: 0 0 20px;
+}
+#gamer-hand .inner {
+  display: inline-block;
+}
+#gamer-hand .inner::before, #gamer-hand .inner::after {
+  content: "";
+  display: block;
+}
+#gamer-hand .inner::after {
+  clear: both;
+}
+
+#game-btns {
+  text-align: center;
+}
+
+/*****************************************************************
+ * Header
+ *****************************************************************/
+#header {
+  padding: 40px 0;
+}
+
+#gamer-score {
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+}
+
+/*****************************************************************
+ * Buttons
+ *****************************************************************/
+.btn {
+  position: relative;
+  display: inline-block;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  font-family: "Roboto", Verdana, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.25px;
+  height: 26px;
+  padding: 2px 10px 0;
+  margin: 0 3px;
+  cursor: pointer;
+  -moz-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+.btn.btn-primary {
+  background-color: #4285f4;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.btn.btn-primary:hover, .btn.btn-primary:focus {
+  background-color: #376ECA;
+}
+.btn.btn-primary:disabled {
+  background-color: #86B1F8;
+  cursor: default;
+}
+.btn.btn-secondary {
+  background-color: #ff4c4c;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.btn.btn-secondary:hover, .btn.btn-secondary:focus {
+  background-color: #e50000;
+}
+.btn.btn-secondary:disabled {
+  background-color: #ff7f7f;
+  cursor: default;
+}
+
+/*****************************************************************
+ * Card
+ *****************************************************************/
+.card {
+  position: relative;
+  float: left;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  color: #000;
+  width: 160px;
+  height: 220px;
+  padding: 10px;
+  box-shadow: 0 1px 5px #666;
+}
+.card + .card {
+  margin-left: -40px;
+}
+.card.hearts, .card.diamonds {
+  color: #e50000;
+}
+.card .top {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.card .middle {
+  position: absolute;
+  font-size: 60px;
+  height: 30px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.card .bottom {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/*****************************************************************
+ * Clearfix
+ *****************************************************************/
+.clearfix::before, .clearfix::after {
+  content: "";
+  display: block;
+}
+.clearfix::after {
+  clear: both;
+}
+
+/*****************************************************************
+ * CSS Animation FadeIn
+ *****************************************************************/
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

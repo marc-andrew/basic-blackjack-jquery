@@ -1,0 +1,53 @@
+/*****************************************************************
+ * Buttons
+ *****************************************************************/
+
+.btn {
+	position: relative;
+	display: inline-block;
+	border: none;
+	border-radius: px(3);
+	outline: none;
+	font-family: $font-2;
+	font-weight: normal;
+	font-size: px(12);
+	line-height: px(16);
+	letter-spacing: px(0.25);
+	height: px(26);
+	padding: px(2) px(10) 0;
+	margin: 0 px(3);
+	cursor: pointer;
+	@include transition(all 200ms ease);
+
+		&.btn-primary {
+			background-color: $blue1;
+			text-transform: uppercase;
+			color: $light;
+
+				&:hover,
+				&:focus {
+					background-color: $darkblue2;
+				}
+
+				&:disabled {
+					background-color: $blue3;
+					cursor: default;
+				}
+		}
+
+		&.btn-secondary {
+			background-color: $red2;
+			text-transform: uppercase;
+			color: $light;
+
+				&:hover,
+				&:focus {
+					background-color: $red1;
+				}
+
+				&:disabled {
+					background-color: $red3;
+					cursor: default;
+				}
+		}
+}

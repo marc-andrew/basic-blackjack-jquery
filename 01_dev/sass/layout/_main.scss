@@ -1,0 +1,21 @@
+/*****************************************************************
+ * Main
+ *****************************************************************/
+
+#main {
+	height: 100%;
+}
+
+#gamer-hand {
+	text-align: center;
+	margin: 0 0 px(20);
+
+		.inner {
+			display: inline-block;
+			@include cf;
+		}
+}
+
+#game-btns {
+	text-align: center;
+}
