@@ -84,7 +84,7 @@ var app = app || {};
 			});
 		},
 		getRandomNr: function(max) {
-			return Math.floor(Math.random() * (max - 1 + 1)) + 1;
+			return Math.floor(Math.random() * max) + 1;
 		},
 		playedCards: function(nr,person) {
 			// If it is the last card end came
