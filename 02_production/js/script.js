@@ -15,6 +15,10 @@ var app = app || {};
 			dealerScore = 0,
 			playerScore = 0;
 
+	var btnDeal = $('#deal'),
+			btnHit = $('#hit'),
+			btnStick = $('#stick');
+
 	//-
 	// Initialize the functions on document ready
 	//-
@@ -56,55 +60,56 @@ var app = app || {};
 	//-
 	app.game = {
 		init: function() {
-			var btnDeal = $('#deal'),
-					btnHit = $('#hit'),
-					btnStick = $('#stick');
-
 			btnDeal.on('click', function(e) {
 				if($(this).is(":disabled")) return;
 				$(this).attr("disabled", true);
 				btnHit.attr("disabled", false);
 				btnStick.attr("disabled", false);
-				app.game.playedCards(app.game.getRandomNr(1,52),'player');
-				app.game.playedCards(app.game.getRandomNr(1,52),'dealer');
+
+				app.game.playedCards(app.game.getRandomNr(cards.length),'player');
+				app.game.playedCards(app.game.getRandomNr(cards.length),'dealer');
+				app.game.playedCards(app.game.getRandomNr(cards.length),'player');
+				app.game.playedCards(app.game.getRandomNr(cards.length),'dealer');
 			});
 
 			btnHit.on('click', function(e) {
 				if($(this).is(":disabled")) return;
-				app.game.playedCards(app.game.getRandomNr(1,52),'player');
-				app.game.playedCards(app.game.getRandomNr(1,52),'dealer');
+				app.game.playedCards(app.game.getRandomNr(cards.length),'player');
+				app.game.playedCards(app.game.getRandomNr(cards.length),'dealer');
 			});
 
 			btnStick.on('click', function(e) {
 				if($(this).is(":disabled")) return;
-				$(this).attr("disabled", true);
-				btnHit.attr("disabled", true);
 				app.game.stick();
 			});
 		},
-		getRandomNr: function(min,max) {
-			return Math.floor(Math.random() * (max - min + 1)) + min;
+		getRandomNr: function(max) {
+			return Math.floor(Math.random() * (max - 1 + 1)) + 1;
 		},
 		playedCards: function(nr,person) {
-			// Check if number has been chosen already
-			if($.inArray(nr, cardsPlayed) !== -1) {
-					// Check if all cards has been played
-					if(cardsPlayed.length === 52) {
-						app.game.gameOver();
-					} else {
-						// Number has been chosen already, run again
-						app.game.playedCards(app.game.getRandomNr(1,52),person);
-					}
-				} else {
-					cardsPlayed.push(nr);
-					if(person === 'player') {
-						playerCards.push(nr);
-						app.game.showHand(nr,'player');
-					} else {
-						dealerCards.push(nr);
-						app.game.showHand(nr,'dealer');
-					}
-				}
+			// If it is the last card end came
+			if(cards.length <= 1) {
+				app.game.gameOver();
+				return;
+			}
+
+			// Push random card into cardsPlayed array
+			cardsPlayed.push(cards[nr]);
+
+			//  Check if player or dealer's turn
+			if(person === 'player') {
+				// Push random card into playerCards array
+				playerCards.push(cards[nr]);
+				app.game.showHand(nr,'player');
+			} else {
+				// Push random card into dealerCards array
+				dealerCards.push(cards[nr]);
+				app.game.showHand(nr,'dealer');
+			}
+
+			// Remove card from cards array
+			cards.splice(nr,1);
+
 		},
 		showHand: function(nr,player) {
 			var objCard = cards[nr];
@@ -124,13 +129,13 @@ var app = app || {};
 					curNr = '1';
 					break;
 				case 'J':
-					curNr = '11';
+					curNr = '10';
 					break;
 				case 'Q':
-					curNr = '12';
+					curNr = '10';
 					break;
 				case 'K':
-					curNr = '13';
+					curNr = '10';
 					break;
 				default:
 					curNr = n;
@@ -138,7 +143,6 @@ var app = app || {};
 			}
 
 			if(player === 'player') {
-				console.log(curNr);
 				playerScore = playerScore + parseInt(curNr);
 				$('#gamer-score').text('You have '+ playerScore);
 
@@ -153,13 +157,17 @@ var app = app || {};
 					$('#hit').attr("disabled", true);
 					$('#stick').attr("disabled", true);
 				}
-			} else {
-				console.log(curNr);
-				dealerScore = dealerScore + parseInt(curNr);
-			}
 
-			console.log('player score: ' + playerScore);
-			console.log('dealer score: ' + dealerScore);
+				console.log('--------------------');
+				console.log('player score: ' + playerScore);
+				console.log(playerCards);
+			} else {
+				dealerScore = dealerScore + parseInt(curNr);
+
+				console.log('--------------------');
+				console.log('dealer score: ' + dealerScore);
+				console.log(dealerCards);
+			}
 
 		},
 		displayCard: function(s,n) {
@@ -198,9 +206,13 @@ var app = app || {};
 			}
 		},
 		gameOver: function() {
+			btnStick.attr("disabled", true);
+			btnHit.attr("disabled", true);
 			$('#gamer-score').append('<p>Dealer has '+dealerScore+'</p><p>You lost!</p>');
 		},
 		gameWon: function() {
+			btnStick.attr("disabled", true);
+			btnHit.attr("disabled", true);
 			$('#gamer-score').append('<p>Dealer has '+dealerScore+'</p><p>You Won!</p>');
 		},
 	};
